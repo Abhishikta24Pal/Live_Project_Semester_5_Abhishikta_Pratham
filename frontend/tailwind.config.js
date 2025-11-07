@@ -1,26 +1,33 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
-      colours: {
-        primary:  "#6C9BCF",
-        primaryD: "#5B8FB9",
-        secondary:"#F5F8FA",
-        secondaryD:"#202636",
-        accent:   "#B3E5FC",
-        accentD:  "#66B2FF",
-        ink:      "#2E2E2E",
-        inkD:     "#EAEAEA",
-        success:  "#A5D6A7",
-        successD: "#388E3C",
-        error:    "#EF9A9A",
-        errorD:   "#E57373",
-        cardD:    "#2A3142",    
-        cardBorderD: "#3A4358",
+      colors: {
+        // --- SereneSpace (mockup) palette ---
+        ssBg:        "#EAF4FF",   // page background (very light blue)
+        ssNavy:      "#1F4B6E",   // headings / main text
+        ssText:      "#2C5376",   // body text
+        ssPrimary:   "#2E6FAE",   // buttons / key accents
+        ssPrimaryH:  "#265E94",   // button hover
+        ssIcon:      "#2A6AA6",   // icon stroke
+        ssCardBg:    "#FFFFFF",   // cards
+        ssCardBrd:   "#D9E8F6",   // card border
+        // optional dark counterparts
+        ssBgD:       "#101720",
+        ssNavyD:     "#E6EEF7",
+        ssCardBgD:   "#1B2330",
+        ssCardBrdD:  "#2A3547",
       },
+      boxShadow: {
+        ss: "0 6px 16px rgba(31, 75, 110, 0.08)", // soft blue-ish shadow
+      },
+      borderRadius: {
+        xl2: "1.25rem",
+      }
     },
   },
   plugins: [],
-}
+};
 
