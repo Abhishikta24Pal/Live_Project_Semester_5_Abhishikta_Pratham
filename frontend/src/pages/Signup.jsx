@@ -26,7 +26,7 @@ export default function Signup() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-[#F5F8FA]">
-      <h1 className="text-4xl font-bold text-[#6C9BCF] mb-2">Name</h1>
+      <h1 className="text-4xl font-bold text-[#6C9BCF] mb-2">Serene Space</h1>
       <h2 className="text-2xl font-semibold text-gray-800 mb-6">Sign Up</h2>
 
       <div className="bg-white w-full max-w-md p-8 rounded-xl shadow-md border border-[#E3F2FD]">
