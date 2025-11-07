@@ -7,6 +7,7 @@ import AnonStories from "./pages/AnonStories";
 import Signup from "./pages/Signup";
 import MainDashboard from "./pages/MainDashboard.jsx";
 import Login from "./pages/Login";
+import ProHelp from "./pages/ProHelp";
 
 
 export default function App() {
@@ -18,8 +19,9 @@ export default function App() {
         <Route path="/MainDashboard" element={<MainDashboard />} />
         <Route path="/anon/chat" element={<AnonChat />} />
         <Route path="/anon/daily-life" element={<AnonDailyLife />} />
-        <Route path="/anon/pro-help" element={<AnonProHelp />} />
+        <Route path="/anon/pro-help" element={<ProHelp />} />
         <Route path="/anon/stories" element={<AnonStories />} />
+
 
         {/* Auth pages (placeholders for now)*/}
         <Route path="/signup" element={<Signup/>} />
