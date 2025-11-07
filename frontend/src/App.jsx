@@ -1,13 +1,25 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import AnonChat from "./pages/AnonChat";
+import AnonDailyLife from "./pages/AnonDailyLife";
+import AnonProHelp from "./pages/AnonProHelp";
+import AnonStories from "./pages/AnonStories";
+
 export default function App() {
   return (
-    <div className="min-h-screen grid place-items-center bg-gray-50">
-      <div className="rounded-2xl p-8 shadow-lg bg-white">
-        <h1 className="text-3xl font-bold">SereneSpace</h1>
-        <p className="mt-2 text-gray-600">Tailwind is working </p>
-        <button className="mt-4 px-5 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700">
-          Test Button
-        </button>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {/* Anonymous features */}
+        <Route path="/anon/chat" element={<AnonChat />} />
+        <Route path="/anon/daily-life" element={<AnonDailyLife />} />
+        <Route path="/anon/pro-help" element={<AnonProHelp />} />
+        <Route path="/anon/stories" element={<AnonStories />} />
+
+        {/* Auth pages (placeholders for now) */}
+        <Route path="/login" element={<div className="p-6">Login page</div>} />
+        <Route path="/signup" element={<div className="p-6">Signup page</div>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
