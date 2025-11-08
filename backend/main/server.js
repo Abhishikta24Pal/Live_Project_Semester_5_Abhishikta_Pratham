@@ -1,8 +1,9 @@
 import express from "express";
 import cors from "cors";
 import geminiProxy from "./routes/geminiProxy.js";
-import audioRoutes from "./routes/audioRoutes.js";
 import dotenv from "dotenv";
+import storyGen from "./routes/storyGen.js";
+
 dotenv.config();
 
 const app = express();
@@ -16,9 +17,8 @@ app.get("/", (req, res) => {
 
 //AI SUPPORT BUDDY
 app.use("/api", geminiProxy);
-
-//USUAL DAILY LIFE
-app.use("/api", audioRoutes);
+// ... existing app setup
+app.use("/api", storyGen);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Main backend running on port ${PORT}`));
