@@ -5,6 +5,7 @@ import geminiProxy from "./routes/geminiProxy.js";
 import storyGen from "./routes/storyGen.js";
 import audioRoutes from "./routes/audioRoutes.js";
 import sleepRoutes from "./routes/sleepRoutes.js";
+import curatedStories from "./routes/curatedStories.js";
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ app.use("/api", geminiProxy);
 app.use("/api", audioRoutes);
 app.use("/api", storyGen);
 app.use("/api", sleepRoutes);
+app.use("/api", curatedStories);
 
 //START
 const PORT = process.env.PORT || 5000;
