@@ -8,8 +8,10 @@ import StoriesIcon from "../assets/icons/stories.svg";
 import DailyLifeIcon from "../assets/icons/dailylife.svg";
 import YouNowBackThenIcon from "../assets/icons/you_now.svg";
 import ProfHelpIcon from "../assets/icons/profhelp.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
+  const navigate = useNavigate();
   return (
     <main className="min-h-screen bg-[#6C9BCF] text-ink dark:text-inkD p-6 md:p-10">
       {/* USER INFO SECTION */}
@@ -87,15 +89,18 @@ export default function Dashboard() {
         </div>
 
         {/* THE SLEEP YOU NEED */}
-        <div className="bg-[#00A7C6] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition col-span-1 row-span-1">
-          <div className="h-40 w-full rounded-xl-bg-blue-200/50 mb-4 flex items-center justify-center overflow-hidden">
-          <img src={SleepIcon} alt="Sleep" className="h-24 w-24 object-contain"/>
-          </div>
-          <h3 className="font-semibold text-center text-white text-lg">
-            The Sleep You Need →
-          </h3>
-        </div>
-
+        <div
+      onClick={() => navigate("/sleep")}
+      className="bg-[#00A7C6] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg cursor-pointer transition col-span-1 row-span-1"
+    >
+      <div className="h-40 w-full mb-4 flex items-center justify-center overflow-hidden">
+        <img src={SleepIcon} alt="Sleep" className="h-24 w-24 object-contain" />
+      </div>
+      <h3 className="font-semibold text-center text-white text-lg">
+        The Sleep You Need →
+      </h3>
+    </div>
+    
         {/* STORIES OF OTHERS */}
         <div className="bg-[#ffffff] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition col-span-1 row-span-1">
           <div className="h-40 w-full rounded-xl-bg-blue-200/50 mb-4 flex items-center justify-center overflow-hidden">

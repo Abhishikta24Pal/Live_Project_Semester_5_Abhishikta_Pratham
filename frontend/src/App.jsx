@@ -8,6 +8,7 @@ import StoryPlayer from "./pages/StoryPlayer";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import MainDashboard from "./pages/MainDashboard.jsx";
+import SleepYouNeed from "./pages/SleepYouNeed";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/anon/stories" element={<Stories />} />
         <Route path="/anon/stories/:id" element={<StoryPlayer />} />
         <Route path="/anon/stories/generate" element={<StoryPlayer generate />} />
+        <Route path="/sleep" element={<SleepYouNeed />} />
 
         {/* Auth */}
         <Route path="/signup" element={<Signup/>} />
