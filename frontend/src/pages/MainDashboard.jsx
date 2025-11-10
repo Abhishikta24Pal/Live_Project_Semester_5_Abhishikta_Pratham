@@ -79,7 +79,8 @@ export default function Dashboard() {
         </div>
 
         {/* MEDITATION */}
-        <div className="bg-[#ffffff] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition col-span-1 row-span-2 row-start-1 col-start-4">
+        <div onClick={() => navigate("/meditation")}
+        className="bg-[#ffffff] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition col-span-1 row-span-2 row-start-1 col-start-4">
           <div className="h-40 w-full rounded-xl-bg-blue-200/50 mb-4 flex items-center justify-center overflow-hidden">
           <img src={MeditationIcon} alt="Meditation" className="h-24 w-24 object-contain"/>
           </div>
