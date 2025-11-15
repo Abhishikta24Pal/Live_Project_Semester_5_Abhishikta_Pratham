@@ -41,7 +41,8 @@ export default function Dashboard() {
                    auto-rows-[180px] gap-6"
       >
         {/* JOURNAL */}
-        <div className="bg-white rounded-2xl p-6 shadow-md flex flex-col items-center justify-center hover:shadow-lg transition col-span-1 row-span-1">
+        <div onClick={() => navigate("/journal")}
+        className="bg-white rounded-2xl p-6 shadow-md flex flex-col items-center justify-center hover:shadow-lg transition col-span-1 row-span-1">
           <div className="h-40 w-full rounded-xl-bg-blue-200/50 mb-4 flex items-center justify-center overflow-hidden">
           <img src={JournalIcon} alt="Journal" className="h-24 w-24 object-contain"/>
           </div>

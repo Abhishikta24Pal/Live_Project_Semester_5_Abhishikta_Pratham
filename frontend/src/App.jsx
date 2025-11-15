@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { AuthProvider } from "./contexts/AuthContext";  // << add this import
+import { AuthProvider } from "./contexts/AuthContext";
 
 import Home from "./pages/Home";
 import AnonChat from "./pages/AnonChat";
@@ -14,13 +14,19 @@ import SleepYouNeed from "./pages/SleepYouNeed";
 import CuratedStory from "./pages/CuratedStory";
 import Meditation from "./pages/Meditation";
 
+// ⭐ NEW
+import Journal from "./pages/Journal";
+
 export default function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>              {/* << wrap here */}
+      <AuthProvider>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/MainDashboard" element={<MainDashboard />} />
+
+          {/* ⭐ New Journal Route */}
+          <Route path="/journal" element={<Journal />} />
 
           {/* Anonymous */}
           <Route path="/anon/chat" element={<AnonChat />} />
@@ -34,8 +40,8 @@ export default function App() {
           <Route path="/meditation" element={<Meditation />} />
 
           {/* Auth */}
-          <Route path="/signup" element={<Signup/>} />
-          <Route path="/login" element={<Login/>} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>
