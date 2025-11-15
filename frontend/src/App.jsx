@@ -13,6 +13,8 @@ import MainDashboard from "./pages/MainDashboard.jsx";
 import SleepYouNeed from "./pages/SleepYouNeed";
 import CuratedStory from "./pages/CuratedStory";
 import Meditation from "./pages/Meditation";
+import YouNow from "./pages/YouNow";
+
 
 // ⭐ NEW
 import Journal from "./pages/Journal";
@@ -38,6 +40,8 @@ export default function App() {
           <Route path="/sleep" element={<SleepYouNeed />} />
           <Route path="/anon/stories/curated/:id" element={<CuratedStory />} />
           <Route path="/meditation" element={<Meditation />} />
+          <Route path="/you-now" element={<YouNow />} />
+
 
           {/* Auth */}
           <Route path="/signup" element={<Signup />} />

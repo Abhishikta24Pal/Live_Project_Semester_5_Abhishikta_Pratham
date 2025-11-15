@@ -60,7 +60,8 @@ export default function Dashboard() {
         </div>
 
         {/* YOU NOW / YOU BACK THEN */}
-        <div className="bg-[#F490B1] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition col-span-1 md:col-span-2 row-span-1">
+        <div onClick={() => navigate("/you-now")}
+        className="bg-[#F490B1] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition col-span-1 md:col-span-2 row-span-1">
           <div className="h-40 w-full rounded-xl-bg-blue-200/50 mb-4 flex items-center justify-center overflow-hidden">
           <img src={YouNowBackThenIcon} alt="You-Now-Back-Then" className="h-24 w-24 object-contain"/>
           </div>
