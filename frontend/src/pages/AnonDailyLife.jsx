@@ -12,7 +12,7 @@ export default function AnonDailyLife() {
       try {
         setLoading(true);
         setError("");
-        const res = await fetch(`${import.meta.env.VITE_API_BASE}/api/audio`);
+        const res = await fetch(`${import.meta.env.VITE_API_BASE}/api/audio_daily_life`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const json = await res.json();
         if (json.ok) setTracks(json.data || []);

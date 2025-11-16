@@ -8,7 +8,9 @@ import StoriesIcon from "../assets/icons/stories.svg";
 import DailyLifeIcon from "../assets/icons/dailylife.svg";
 import YouNowBackThenIcon from "../assets/icons/you_now.svg";
 import ProfHelpIcon from "../assets/icons/profhelp.svg";
+import AIBuddyToggle from "../components/AIBuddyToggle";
 import { useNavigate } from "react-router-dom";
+
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -29,7 +31,17 @@ export default function Dashboard() {
 
         {/* Right side - Check-in and Toggles */}
         <div className="mt-6 md:mt-0 text-right flex flex-col gap-2">
-          <p className="font-semibold">Check In Points:</p>
+           <div
+  onClick={() => navigate("/ai-buddy-history")}
+  className="bg-[#F490B1] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition cursor-pointer col-span-1 row-span-1"
+>
+  <div className="flex items-center justify-center mb-3">
+    <span className="text-3xl">🧠</span>
+  </div>
+  <h3 className="font-semibold text-center text-ink">
+    AI Buddy Memories →
+  </h3>
+</div>
           <DarkModeToggle />
           <LanguageToggle />
         </div>
@@ -122,6 +134,7 @@ export default function Dashboard() {
           <h3 className="font-semibold text-center text-white text-lg">
             Professional Help Section →
           </h3>
+          <AIBuddyToggle />
         </div>
       </section>
     </main>

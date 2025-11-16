@@ -14,6 +14,10 @@ import SleepYouNeed from "./pages/SleepYouNeed";
 import CuratedStory from "./pages/CuratedStory";
 import Meditation from "./pages/Meditation";
 import YouNow from "./pages/YouNow";
+import AIBuddyHistory from "./pages/AIBuddyHistory";
+import AIBuddyChatView from "./pages/AIBuddyChatView";
+
+
 
 
 // ⭐ NEW
@@ -41,9 +45,12 @@ export default function App() {
           <Route path="/anon/stories/curated/:id" element={<CuratedStory />} />
           <Route path="/meditation" element={<Meditation />} />
           <Route path="/you-now" element={<YouNow />} />
+          <Route path="/ai-buddy-history" element={<AIBuddyHistory />} />
+          <Route path="/ai-buddy/history/:date" element={<AIBuddyChatView />} />
 
 
-          {/* Auth */}
+
+          {/* Authentication */}
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
         </Routes>

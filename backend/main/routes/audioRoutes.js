@@ -1,12 +1,11 @@
-import express from "express";
+// backend/main/routes/audioRoutes.js
+import { Router } from "express";
 import { getAllAudios, streamAudio } from "../controllers/audioController.js";
 
-const router = express.Router();
+const router = Router();
 
-//FETCH ALL AUDIO
-router.get("/audio", getAllAudios);
+router.get("/audio_daily_life", getAllAudios);
 
-//STREAM AUDIO
-router.get("/audio/:filename", streamAudio);
+router.get("/audio_daily_life/:filename", streamAudio);
 
 export default router;

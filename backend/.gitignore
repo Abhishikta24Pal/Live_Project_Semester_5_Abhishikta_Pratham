@@ -1,0 +1,13 @@
+# Ignore Node modules anywhere under backend
+**/node_modules/
+
+# Ignore any env files inside subfolders
+**/.env
+**/.env.*
+
+# Ignore any firebase private keys anywhere
+**/serviceAccount.json
+
+# OS junk
+.DS_Store
+Thumbs.db
