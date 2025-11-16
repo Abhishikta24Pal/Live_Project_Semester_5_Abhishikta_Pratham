@@ -16,11 +16,8 @@ import Meditation from "./pages/Meditation";
 import YouNow from "./pages/YouNow";
 import AIBuddyHistory from "./pages/AIBuddyHistory";
 import AIBuddyChatView from "./pages/AIBuddyChatView";
-
-
-
-
-// ⭐ NEW
+import AnxietySelector from "./pages/AnxietySelector.jsx";
+import AnxietyCoping from "./pages/AnxietyCoping.jsx";
 import Journal from "./pages/Journal";
 
 export default function App() {
@@ -47,7 +44,8 @@ export default function App() {
           <Route path="/you-now" element={<YouNow />} />
           <Route path="/ai-buddy-history" element={<AIBuddyHistory />} />
           <Route path="/ai-buddy/history/:date" element={<AIBuddyChatView />} />
-
+          <Route path="/anxiety" element={<AnxietySelector />} />
+          <Route path="/anxiety/cope/:symptomId" element={<AnxietyCoping />} />
 
 
           {/* Authentication */}

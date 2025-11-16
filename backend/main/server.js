@@ -6,6 +6,8 @@ import storyGen from "./routes/storyGen.js";
 import audioRoutes from "./routes/audioRoutes.js";
 import sleepRoutes from "./routes/sleepRoutes.js";
 import curatedStories from "./routes/curatedStories.js";
+import meditationRoutes from "./routes/meditationRoutes.js";
+
 
 dotenv.config();
 
@@ -24,6 +26,7 @@ app.use("/api", audioRoutes);
 app.use("/api", storyGen);
 app.use("/api", sleepRoutes);
 app.use("/api", curatedStories);
+app.use("/api/audio", meditationRoutes);
 
 //START
 const PORT = process.env.PORT || 5000;
