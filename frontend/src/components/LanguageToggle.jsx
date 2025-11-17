@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 const labels = {
-  en: { login: "Log in", signup: "Sign up", explore: "Start Exploring" },
-  hi: { login: "लॉग इन", signup: "साइन अप", explore: "शुरू करें" },
+  en: { login: "Log in", signup: "Sign up", explore: "Start Exploring"},
+  hi: { login: "लॉग इन", signup: "साइन अप", explore: "शुरू करें"},
 };
 
 export default function LanguageToggle({ onChange }) {
