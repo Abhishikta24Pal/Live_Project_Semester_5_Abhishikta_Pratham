@@ -1,4 +1,3 @@
-// frontend/src/pages/MainDashboard.jsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
@@ -214,8 +213,10 @@ export default function MainDashboard() {
           <h3 className="font-semibold text-center text-white text-lg">
             Professional Help Section →
           </h3>
-          <AIBuddyToggle />
         </div>
+        <div className="absolute bottom-4 right-4">
+    <AIBuddyToggle />
+  </div>
       </section>
     </main>
   );
