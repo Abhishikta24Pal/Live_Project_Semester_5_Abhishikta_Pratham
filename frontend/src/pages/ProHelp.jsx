@@ -152,10 +152,10 @@ export default function ProHelp() {
   const disabled = !roomId || !connected;
 
   return (
-    <main className="min-h-screen bg-ssBg text-ssText dark:bg-ssBgD dark:text-ssNavyD px-4 py-8">
+    <main className="min-h-screen bg-[#6C9BCF]  text-ssText dark:bg-ssBgD dark:text-ssNavyD px-4 py-8">
       <div className="max-w-3xl mx-auto">
         <div className="rounded-2xl bg-ssCardBg dark:bg-ssCardBgD border border-ssCardBrd p-6 shadow-ss">
-          <h1 className="text-2xl font-bold text-ssNavy dark:text-ssNavyD">Professional Help · Audio Call</h1>
+          <h1 className="text-2xl font-bold text-black dark:text-ssNavyD">Professional Help · Audio Call</h1>
           <p className="text-sm text-ssText/80 mt-1">WebRTC audio-only with custom WebSocket signaling. No DB.</p>
 
           <div className="mt-6 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-3">

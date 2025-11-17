@@ -94,7 +94,7 @@ export default function MainDashboard() {
               className="h-24 w-24 object-contain"
             />
           </div>
-          <h3 className="font-semibold text-center text-ink">Journal</h3>
+          <h3 className="font-semibold text-center text-ink">Journal →</h3>
         </div>
 
         {/* ANXIETY SUPPORT */}

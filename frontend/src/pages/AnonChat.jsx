@@ -44,10 +44,10 @@ export default function AnonChat() {
     }
   }
   return (
-    <main className="min-h-screen bg-ssBg text-ssText dark:bg-ssBgD dark:text-ssNavyD p-6">
+    <main className="min-h-screen bg-[#6C9BCF]  text-ssText dark:bg-ssBgD dark:text-ssNavyD p-6">
       <div className="mx-auto max-w-3xl">
         <div className="rounded-2xl bg-white/80 border border-ssCardBrd p-6 shadow-ss">
-          <h1 className="text-2xl font-bold text-ssNavy mb-2">AI Support Buddy (Guest)</h1>
+          <h1 className="text-2xl font-bold text-black dark:text-ssNavyD">AI Support Buddy (Guest)</h1>
           <p className="text-sm text-ssText/80 mb-4">Anonymous chat. Your messages are not saved.</p>
 
           <div className="border rounded-lg p-4 h-[60vh] overflow-auto bg-ssCardBg">

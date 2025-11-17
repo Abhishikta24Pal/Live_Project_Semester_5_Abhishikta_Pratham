@@ -25,7 +25,7 @@ export default function AIBuddyHistory() {
   return (
     <main className="min-h-screen bg-[#6C9BCF] text-ink p-6 md:p-10">
       <div className="bg-white rounded-2xl p-6 shadow-lg max-w-3xl mx-auto">
-        <h1 className="text-2xl font-bold mb-4">AI Buddy Memories</h1>
+        <h1 className="text-2xl font-bold text-black dark:text-ssNavyD">AI Buddy Memories</h1>
         <p className="mb-6 text-gray-600">
           Your saved AI Buddy conversations sorted by date.
         </p>

@@ -96,7 +96,7 @@ export default function CuratedStory() {
   const nextId = STORIES[(storyIndex + 1) % STORIES.length].id;
 
   return (
-    <main className="min-h-screen px-4 py-6 bg-ssBg text-ssText dark:bg-ssBgD dark:text-ssNavyD">
+    <main className="min-h-screen px-4 py-6 bg-[#6C9BCF]  text-ssText dark:bg-ssBgD dark:text-ssNavyD">
       <div className="max-w-4xl mx-auto space-y-6">
         {/* Vibrant hero */}
         <div className={`rounded-3xl p-6 text-white shadow-lg bg-gradient-to-br ${story.cover}`}>
@@ -105,7 +105,7 @@ export default function CuratedStory() {
               <h1 className="text-2xl md:text-3xl font-bold drop-shadow">
                 {title}
               </h1>
-              <p className="opacity-90">Curated healing story • Guardian</p>
+              <p className="opacity-90">Curated healing story</p>
             </div>
 
             <div className="flex items-center gap-3">

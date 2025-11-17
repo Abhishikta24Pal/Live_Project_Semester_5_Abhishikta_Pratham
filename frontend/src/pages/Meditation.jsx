@@ -65,13 +65,13 @@ export default function Meditation() {
   };
 
   return (
-    <main className="min-h-screen bg-ssBg text-ssText dark:bg-ssBgD dark:text-ssNavyD px-4 py-6">
+    <main className="min-h-screen bg-[#6C9BCF]  text-ssText dark:bg-ssBgD dark:text-ssNavyD px-4 py-6">
       <div className="max-w-5xl mx-auto space-y-6">
         <header className="space-y-2">
-          <h1 className="text-2xl font-bold text-ssNavy dark:text-ssNavyD">
+          <h1 className="text-2xl font-bold text-black dark:text-ssNavyD">
             Meditation & Breathing
           </h1>
-          <p className="opacity-80 text-sm">
+          <p className="opacity-80 text-sm text-black">
             Short, focused audios for calm, sleep, and clarity. Pick one and breathe with it.
           </p>
         </header>

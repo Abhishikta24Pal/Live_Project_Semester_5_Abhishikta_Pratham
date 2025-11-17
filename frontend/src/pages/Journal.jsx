@@ -27,10 +27,10 @@ export default function Journal() {
   }
 
   return (
-    <div className="min-h-screen p-6 bg-gradient-to-b from-white to-slate-50">
+    <div className="min-h-screen p-6  bg-[#6C9BCF] ">
       <div className="max-w-4xl mx-auto">
         <header className="flex items-center justify-between mb-6">
-          <h1 className="text-3xl font-semibold">Journal</h1>
+          <h1 className="text-2xl font-bold text-black dark:text-ssNavyD">Journal</h1>
           <div>
             <button onClick={openMemories} className="px-3 py-1 rounded bg-slate-100">Memories</button>
           </div>

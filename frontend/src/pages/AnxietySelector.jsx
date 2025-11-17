@@ -8,9 +8,9 @@ const navigate = useNavigate();
 
 
 return (
-<main className="min-h-screen p-6 md:p-10 bg-[#6C9BCF] dark:bg-[#1C1F2A]">
+<main className="min-h-screen p-6 md:p-10  bg-[#6C9BCF]  dark:bg-[#1C1F2A]">
 <div className="max-w-4xl mx-auto">
-<h1 className="text-2xl md:text-3xl font-semibold mb-2 text-black dark:text-ssNavyD">What are you feeling right now?</h1>
+<h1 className="text-2xl font-bold text-black dark:text-ssNavyD">What are you feeling right now?</h1>
 <p className="mb-6 text-sm opacity-80">Choose a symptom — we’ll show quick, friendly ways to help.</p>
 
 

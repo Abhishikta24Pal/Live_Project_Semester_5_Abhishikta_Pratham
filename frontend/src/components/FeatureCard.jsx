@@ -1,4 +1,4 @@
-// frontend/src/components/FeatureCard.jsx
+
 import { Link } from "react-router-dom";
 
 export default function FeatureCard({ title, title_hi, desc, desc_hi, to, lang = "en" }) {

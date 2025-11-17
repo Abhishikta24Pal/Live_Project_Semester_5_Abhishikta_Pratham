@@ -28,13 +28,13 @@ export default function Stories() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-ssBg text-ssText dark:bg-ssBgD dark:text-ssNavyD px-4 py-6">
+    <main className="min-h-screen bg-[#6C9BCF]  text-ssText dark:bg-ssBgD dark:text-ssNavyD px-4 py-6">
       <div className="max-w-5xl mx-auto space-y-6">
         <header>
-          <h1 className="text-2xl font-bold text-ssNavy dark:text-ssNavyD">
+          <h1 className="text-2xl font-bold text-black dark:text-ssNavyD">
             Healing Stories
           </h1>
-          <p className="text-sm opacity-80">Pick a story to listen or read.</p>
+          <p className="text-sm opacity-80 text-black">Pick a story to listen or read.</p>
         </header>
 
         {loading && <div className="rounded-xl p-4 border bg-ssCardBg dark:bg-ssCardBgD">Loading…</div>}
