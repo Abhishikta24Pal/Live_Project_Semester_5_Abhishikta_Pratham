@@ -1,3 +1,4 @@
+// frontend/src/pages/MainDashboard.jsx
 import DarkModeToggle from "../components/DarkModeToggle";
 import LanguageToggle from "../components/LanguageToggle";
 import JournalIcon from "../assets/icons/journal.svg";
@@ -11,18 +12,43 @@ import ProfHelpIcon from "../assets/icons/profhelp.svg";
 import AIBuddyToggle from "../components/AIBuddyToggle";
 import { useNavigate } from "react-router-dom";
 
+// 👇 import from your AuthContext
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Dashboard() {
   const navigate = useNavigate();
+  const { logout } = useAuth(); // you can also grab currentUser if you want to show email later
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate("/login");
+    } catch (err) {
+      console.error("Error during logout:", err);
+      alert("Could not log you out. Please try again.");
+    }
+  };
+
   return (
     <main className="min-h-screen bg-[#6C9BCF] text-ink dark:text-inkD p-6 md:p-10">
       {/* USER INFO SECTION */}
       <section className="bg-white dark:bg-[#1C1F2A] rounded-2xl p-6 md:p-8 shadow-md mb-10 flex flex-col md:flex-row justify-between items-center">
         {/* Left side - Photo, Name, Age */}
         <div className="flex items-center gap-6">
-          <div className="w-32 h-32 bg-[#D36B8A] rounded-xl flex items-center justify-center text-white font-semibold">
-            Photo
+          <div className="flex flex-col items-center gap-3">
+            <div className="w-32 h-32 bg-[#D36B8A] rounded-xl flex items-center justify-center text-white font-semibold">
+              Photo
+            </div>
+
+            {/* 👇 Logout button just below the photo */}
+            <button
+              onClick={handleLogout}
+              className="text-sm px-4 py-1.5 rounded-full bg-red-500 hover:bg-red-600 text-white transition"
+            >
+              Logout
+            </button>
           </div>
+
           <div>
             <p className="text-lg font-semibold">Name:</p>
             <p className="text-lg font-semibold">Age:</p>
@@ -31,17 +57,17 @@ export default function Dashboard() {
 
         {/* Right side - Check-in and Toggles */}
         <div className="mt-6 md:mt-0 text-right flex flex-col gap-2">
-           <div
-  onClick={() => navigate("/ai-buddy-history")}
-  className="bg-[#F490B1] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition cursor-pointer col-span-1 row-span-1"
->
-  <div className="flex items-center justify-center mb-3">
-    <span className="text-3xl">🧠</span>
-  </div>
-  <h3 className="font-semibold text-center text-ink">
-    AI Buddy Memories →
-  </h3>
-</div>
+          <div
+            onClick={() => navigate("/ai-buddy-history")}
+            className="bg-[#F490B1] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition cursor-pointer col-span-1 row-span-1"
+          >
+            <div className="flex items-center justify-center mb-3">
+              <span className="text-3xl">🧠</span>
+            </div>
+            <h3 className="font-semibold text-center text-ink">
+              AI Buddy Memories →
+            </h3>
+          </div>
           <DarkModeToggle />
           <LanguageToggle />
         </div>
@@ -53,19 +79,31 @@ export default function Dashboard() {
                    auto-rows-[180px] gap-6"
       >
         {/* JOURNAL */}
-        <div onClick={() => navigate("/journal")}
-        className="bg-white rounded-2xl p-6 shadow-md flex flex-col items-center justify-center hover:shadow-lg transition col-span-1 row-span-1">
-          <div className="h-40 w-full rounded-xl-bg-blue-200/50 mb-4 flex items-center justify-center overflow-hidden">
-          <img src={JournalIcon} alt="Journal" className="h-24 w-24 object-contain"/>
+        <div
+          onClick={() => navigate("/journal")}
+          className="bg-white rounded-2xl p-6 shadow-md flex flex-col items-center justify-center hover:shadow-lg transition col-span-1 row-span-1"
+        >
+          <div className="h-40 w-full mb-4 flex items-center justify-center overflow-hidden">
+            <img
+              src={JournalIcon}
+              alt="Journal"
+              className="h-24 w-24 object-contain"
+            />
           </div>
           <h3 className="font-semibold text-center text-ink">Journal</h3>
         </div>
 
         {/* ANXIETY SUPPORT */}
-        <div onClick={() => navigate("/anxiety")}
-        className="bg-[#F490B1] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition col-span-1 md:col-span-2 row-span-1">
-          <div className="h-40 w-full rounded-xl-bg-blue-200/50 mb-4 flex items-center justify-center overflow-hidden">
-          <img src={AnxietyIcon} alt="Anxiety" className="h-24 w-24 object-contain"/>
+        <div
+          onClick={() => navigate("/anxiety")}
+          className="bg-[#F490B1] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition col-span-1 md:col-span-2 row-span-1"
+        >
+          <div className="h-40 w-full mb-4 flex items-center justify-center overflow-hidden">
+            <img
+              src={AnxietyIcon}
+              alt="Anxiety"
+              className="h-24 w-24 object-contain"
+            />
           </div>
           <h3 className="font-semibold text-center text-white text-lg">
             Anxiety Support →
@@ -73,10 +111,16 @@ export default function Dashboard() {
         </div>
 
         {/* YOU NOW / YOU BACK THEN */}
-        <div onClick={() => navigate("/you-now")}
-        className="bg-[#F490B1] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition col-span-1 md:col-span-2 row-span-1">
-          <div className="h-40 w-full rounded-xl-bg-blue-200/50 mb-4 flex items-center justify-center overflow-hidden">
-          <img src={YouNowBackThenIcon} alt="You-Now-Back-Then" className="h-24 w-24 object-contain"/>
+        <div
+          onClick={() => navigate("/you-now")}
+          className="bg-[#F490B1] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition col-span-1 md:col-span-2 row-span-1"
+        >
+          <div className="h-40 w-full mb-4 flex items-center justify-center overflow-hidden">
+            <img
+              src={YouNowBackThenIcon}
+              alt="You-Now-Back-Then"
+              className="h-24 w-24 object-contain"
+            />
           </div>
           <h3 className="font-semibold text-center text-white text-lg">
             You Now / You Back Then →
@@ -84,10 +128,16 @@ export default function Dashboard() {
         </div>
 
         {/* USUAL DAILY LIFE */}
-        <div onClick={() => navigate("/anon/daily-life")}
-        className="bg-[#00A7C6] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition col-span-1 row-span-1">
-          <div className="h-40 w-full rounded-xl-bg-blue-200/50 mb-4 flex items-center justify-center overflow-hidden">
-          <img src={DailyLifeIcon} alt="Daily-Life" className="h-24 w-24 object-contain"/>
+        <div
+          onClick={() => navigate("/anon/daily-life")}
+          className="bg-[#00A7C6] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition col-span-1 row-span-1"
+        >
+          <div className="h-40 w-full mb-4 flex items-center justify-center overflow-hidden">
+            <img
+              src={DailyLifeIcon}
+              alt="Daily-Life"
+              className="h-24 w-24 object-contain"
+            />
           </div>
           <h3 className="font-semibold text-center text-white text-lg">
             Usual Daily Life →
@@ -95,10 +145,16 @@ export default function Dashboard() {
         </div>
 
         {/* MEDITATION */}
-        <div onClick={() => navigate("/meditation")}
-        className="bg-[#ffffff] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition col-span-1 row-span-2 row-start-1 col-start-4">
-          <div className="h-40 w-full rounded-xl-bg-blue-200/50 mb-4 flex items-center justify-center overflow-hidden">
-          <img src={MeditationIcon} alt="Meditation" className="h-24 w-24 object-contain"/>
+        <div
+          onClick={() => navigate("/meditation")}
+          className="bg-[#ffffff] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition col-span-1 row-span-2 row-start-1 col-start-4"
+        >
+          <div className="h-40 w-full mb-4 flex items-center justify-center overflow-hidden">
+            <img
+              src={MeditationIcon}
+              alt="Meditation"
+              className="h-24 w-24 object-contain"
+            />
           </div>
           <h3 className="font-semibold text-center text-black text-lg">
             Meditation →
@@ -107,22 +163,32 @@ export default function Dashboard() {
 
         {/* THE SLEEP YOU NEED */}
         <div
-      onClick={() => navigate("/sleep")}
-      className="bg-[#00A7C6] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg cursor-pointer transition col-span-1 row-span-1"
-    >
-      <div className="h-40 w-full mb-4 flex items-center justify-center overflow-hidden">
-        <img src={SleepIcon} alt="Sleep" className="h-24 w-24 object-contain" />
-      </div>
-      <h3 className="font-semibold text-center text-white text-lg">
-        The Sleep You Need →
-      </h3>
-    </div>
-    
+          onClick={() => navigate("/sleep")}
+          className="bg-[#00A7C6] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg cursor-pointer transition col-span-1 row-span-1"
+        >
+          <div className="h-40 w-full mb-4 flex items-center justify-center overflow-hidden">
+            <img
+              src={SleepIcon}
+              alt="Sleep"
+              className="h-24 w-24 object-contain"
+            />
+          </div>
+          <h3 className="font-semibold text-center text-white text-lg">
+            The Sleep You Need →
+          </h3>
+        </div>
+
         {/* STORIES OF OTHERS */}
-        <div onClick={() => navigate("/anon/stories")}
-        className="bg-[#ffffff] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition col-span-1 row-span-1">
-          <div className="h-40 w-full rounded-xl-bg-blue-200/50 mb-4 flex items-center justify-center overflow-hidden">
-          <img src={StoriesIcon} alt="Stories" className="h-24 w-24 object-contain"/>
+        <div
+          onClick={() => navigate("/anon/stories")}
+          className="bg-[#ffffff] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition col-span-1 row-span-1"
+        >
+          <div className="h-40 w-full mb-4 flex items-center justify-center overflow-hidden">
+            <img
+              src={StoriesIcon}
+              alt="Stories"
+              className="h-24 w-24 object-contain"
+            />
           </div>
           <h3 className="font-semibold text-center text-black text-lg">
             Stories of Others →
@@ -130,10 +196,16 @@ export default function Dashboard() {
         </div>
 
         {/* PROFESSIONAL HELP */}
-        <div onClick={() => navigate("/anon/pro-help")}
-        className="bg-[#F490B1] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition col-span-2 row-span-1">
-          <div className="h-40 w-full rounded-xl-bg-blue-200/50 mb-4 flex items-center justify-center overflow-hidden">
-          <img src={ProfHelpIcon} alt="Professional Help" className="h-24 w-24 object-contain"/>
+        <div
+          onClick={() => navigate("/anon/pro-help")}
+          className="bg-[#F490B1] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition col-span-2 row-span-1"
+        >
+          <div className="h-40 w-full mb-4 flex items-center justify-center overflow-hidden">
+            <img
+              src={ProfHelpIcon}
+              alt="Professional Help"
+              className="h-24 w-24 object-contain"
+            />
           </div>
           <h3 className="font-semibold text-center text-white text-lg">
             Professional Help Section →

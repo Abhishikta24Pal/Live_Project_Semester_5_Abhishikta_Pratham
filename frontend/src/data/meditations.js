@@ -67,4 +67,12 @@ export const MEDITATIONS = [
     cover: "from-cyan-500 via-sky-600 to-indigo-700",
     filename: "15 Minute Guided Breathing Meditation for Focus.mp3",
   },
+  {
+    id: "kim-guided",
+    title: "Guided Breathing Meditation With Kim E",
+    duration: "14–16 min",
+    tags: ["guided", "soothing"],
+    cover: "from-emerald-500 via-teal-500 to-cyan-500",
+    filename: "Guided Breathing Meditation With Kim E.mp3",
+  },
 ];
