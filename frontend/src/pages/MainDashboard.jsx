@@ -1,6 +1,12 @@
 // frontend/src/pages/MainDashboard.jsx
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+
 import DarkModeToggle from "../components/DarkModeToggle";
 import LanguageToggle from "../components/LanguageToggle";
+import AIBuddyToggle from "../components/AIBuddyToggle";
+
 import JournalIcon from "../assets/icons/journal.svg";
 import AnxietyIcon from "../assets/icons/anxiety.svg";
 import MeditationIcon from "../assets/icons/meditation.svg";
@@ -9,23 +15,23 @@ import StoriesIcon from "../assets/icons/stories.svg";
 import DailyLifeIcon from "../assets/icons/dailylife.svg";
 import YouNowBackThenIcon from "../assets/icons/you_now.svg";
 import ProfHelpIcon from "../assets/icons/profhelp.svg";
-import AIBuddyToggle from "../components/AIBuddyToggle";
-import { useNavigate } from "react-router-dom";
 
 // 👇 import from your AuthContext
-import { useAuth } from "../contexts/AuthContext";
-
-export default function Dashboard() {
+export default function MainDashboard() {
   const navigate = useNavigate();
-  const { logout } = useAuth(); // you can also grab currentUser if you want to show email later
+  const { user, logout } = useAuth();
+
+  const friendlyName =
+    user?.displayName ||
+    (user?.email ? user.email.split("@")[0].replace(/[._-]/g, " ") : "User");
 
   const handleLogout = async () => {
     try {
       await logout();
       navigate("/login");
     } catch (err) {
-      console.error("Error during logout:", err);
-      alert("Could not log you out. Please try again.");
+      console.error("Logout failed:", err);
+      alert("Could not logout. Try again.");
     }
   };
 
@@ -33,25 +39,23 @@ export default function Dashboard() {
     <main className="min-h-screen bg-[#6C9BCF] text-ink dark:text-inkD p-6 md:p-10">
       {/* USER INFO SECTION */}
       <section className="bg-white dark:bg-[#1C1F2A] rounded-2xl p-6 md:p-8 shadow-md mb-10 flex flex-col md:flex-row justify-between items-center">
-        {/* Left side - Photo, Name, Age */}
-        <div className="flex items-center gap-6">
-          <div className="flex flex-col items-center gap-3">
-            <div className="w-32 h-32 bg-[#D36B8A] rounded-xl flex items-center justify-center text-white font-semibold">
-              Photo
+        {/* LEFT: name/email + logout (takes remaining space) */}
+        <div className="flex items-center gap-6 w-full md:w-auto flex-1">
+          <div className="flex flex-col">
+            <div className="text-lg font-semibold text-ssNavy dark:text-white">
+              {friendlyName}
             </div>
+            <div className="text-sm opacity-75 mt-1">{user?.email || "No email"}</div>
 
-            {/* 👇 Logout button just below the photo */}
-            <button
-              onClick={handleLogout}
-              className="text-sm px-4 py-1.5 rounded-full bg-red-500 hover:bg-red-600 text-white transition"
-            >
-              Logout
-            </button>
-          </div>
-
-          <div>
-            <p className="text-lg font-semibold">Name:</p>
-            <p className="text-lg font-semibold">Age:</p>
+            <div className="mt-4">
+              <button
+                onClick={handleLogout}
+                className="px-4 py-2 rounded-lg bg-ssPrimary hover:bg-ssPrimaryH text-white shadow-sm transition"
+                aria-label="Logout"
+              >
+                Logout
+              </button>
+            </div>
           </div>
         </div>
 
