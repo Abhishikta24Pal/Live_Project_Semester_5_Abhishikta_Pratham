@@ -1,10 +1,15 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import DarkModeToggle from "../components/DarkModeToggle";
+import LanguageToggle from "../components/LanguageToggle";
 
 export default function Signup() {
   const navigate = useNavigate();
   const { signup, signInWithGoogle } = useAuth();
+
+  const [lang, setLang] = useState("en");
+  const t = (en, hi) => (lang === "en" ? en : hi);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -12,14 +17,12 @@ export default function Signup() {
     password: "",
     confirmPassword: "",
   });
-  const [error, setError] = useState("");
+
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData((f) => ({ ...f, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = async (e) => {
@@ -27,18 +30,16 @@ export default function Signup() {
     setError("");
 
     if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match");
+      setError(t("Passwords do not match", "पासवर्ड मेल नहीं खाते"));
       return;
     }
 
     try {
       setLoading(true);
-      // signup with firebase; pass name as extra metadata saved in Firestore
       await signup(formData.email, formData.password, { name: formData.name });
       navigate("/MainDashboard");
     } catch (err) {
-      console.error(err);
-      setError(err.message || "Signup failed");
+      setError(err.message || t("Signup failed", "साइन अप विफल"));
     } finally {
       setLoading(false);
     }
@@ -50,97 +51,130 @@ export default function Signup() {
       await signInWithGoogle();
       navigate("/MainDashboard");
     } catch (err) {
-      console.error(err);
-      setError(err.message || "Google sign-in failed");
+      setError(err.message || t("Google sign-in failed", "गूगल साइन-इन विफल"));
     } finally {
       setLoading(false);
     }
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-[#F5F8FA]">
-      <h1 className="text-4xl font-bold text-[#6C9BCF] mb-2">Serene Space</h1>
-      <h2 className="text-2xl font-semibold text-gray-800 mb-6">Sign Up</h2>
+    <main className="min-h-screen bg-ssBg text-ssText dark:bg-ssBgD dark:text-ssNavyD flex items-center justify-center px-4">
 
-      <div className="bg-white w-full max-w-md p-8 rounded-xl shadow-md border border-[#E3F2FD]">
-        {error && <div className="text-red-600 mb-4">{error}</div>}
-        <form onSubmit={handleSubmit} className="space-y-5">
+      {/* TOP RIGHT TOGGLES */}
+      <div className="absolute top-4 right-4 flex gap-3">
+        <LanguageToggle onChange={setLang} />
+        <DarkModeToggle />
+      </div>
+
+      <div className="w-full max-w-md bg-ssCardBg dark:bg-ssCardBgD border border-ssCardBrd dark:border-ssCardBrd rounded-2xl p-8 shadow-ss">
+
+        <h1 className="text-2xl font-bold text-center text-ssNavy dark:text-ssNavyD mb-2">
+          {t("Create an account", "खाता बनाएँ")}
+        </h1>
+
+        <p className="text-center text-sm text-ssText/80 mb-6">
+          {t("Join SereneSpace — your calm journey begins here", "सीरीनस्पेस से जुड़ें — आपकी शांत यात्रा यहीं से शुरू होती है")}
+        </p>
+
+        {error && <div className="text-red-600 mb-3">{error}</div>}
+
+        <form className="space-y-4" onSubmit={handleSubmit}>
+
+          {/* Name */}
           <div>
-            <label htmlFor="name" className="block text-gray-700 text-sm font-medium mb-1">Name</label>
+            <label className="block text-sm font-medium mb-1">
+              {t("Name", "नाम")}
+            </label>
             <input
               type="text"
               name="name"
               value={formData.name}
               onChange={handleChange}
-              placeholder="Enter your name"
-              className="w-full px-4 py-2 border border-[#B3E5FC] rounded-md focus:outline-none focus:ring-2 focus:ring-[#6C9BCF]"
+              placeholder={t("Enter your name", "अपना नाम दर्ज करें")}
               required
+              className="w-full px-4 py-2 rounded-lg border border-ssCardBrd dark:border-ssCardBrd bg-white dark:bg-ssCardBgD focus:ring-2 focus:ring-ssPrimary"
             />
           </div>
 
+          {/* Email */}
           <div>
-            <label htmlFor="email" className="block text-gray-700 text-sm font-medium mb-1">Email</label>
+            <label className="block text-sm font-medium mb-1">
+              {t("Email", "ईमेल")}
+            </label>
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="Enter your email"
-              className="w-full px-4 py-2 border border-[#B3E5FC] rounded-md focus:outline-none focus:ring-2 focus:ring-[#6C9BCF]"
+              placeholder={t("you@example.com", "example@mail.com")}
               required
+              className="w-full px-4 py-2 rounded-lg border border-ssCardBrd dark:border-ssCardBrd bg-white dark:bg-ssCardBgD focus:ring-2 focus:ring-ssPrimary"
             />
           </div>
 
+          {/* Password */}
           <div>
-            <label htmlFor="password" className="block text-gray-700 text-sm font-medium mb-1">Password</label>
+            <label className="block text-sm font-medium mb-1">
+              {t("Password", "पासवर्ड")}
+            </label>
             <input
               type="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
-              placeholder="Enter your password"
-              className="w-full px-4 py-2 border border-[#B3E5FC] rounded-md focus:outline-none focus:ring-2 focus:ring-[#6C9BCF]"
+              placeholder="••••••••"
               required
+              className="w-full px-4 py-2 rounded-lg border border-ssCardBrd bg-white dark:bg-ssCardBgD focus:ring-2 focus:ring-ssPrimary"
             />
           </div>
 
+          {/* Confirm Password */}
           <div>
-            <label htmlFor="confirmPassword" className="block text-gray-700 text-sm font-medium mb-1">Confirm Password</label>
+            <label className="block text-sm font-medium mb-1">
+              {t("Confirm Password", "पासवर्ड फिर से दर्ज करें")}
+            </label>
             <input
               type="password"
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
-              placeholder="Re-enter your password"
-              className="w-full px-4 py-2 border border-[#B3E5FC] rounded-md focus:outline-none focus:ring-2 focus:ring-[#6C9BCF]"
+              placeholder="••••••••"
               required
+              className="w-full px-4 py-2 rounded-lg border border-ssCardBrd bg-white dark:bg-ssCardBgD focus:ring-2 focus:ring-ssPrimary"
             />
           </div>
 
+          {/* SIGN UP BUTTON */}
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2 mt-2 bg-[#6C9BCF] hover:bg-[#5B8FB9] text-white font-semibold rounded-md transition duration-200 shadow-sm"
+            className="w-full bg-ssPrimary hover:bg-ssPrimaryH text-white py-2.5 rounded-lg font-medium shadow-ss"
           >
-            {loading ? "Signing up..." : "Sign Up"}
+            {loading
+              ? t("Signing up...", "साइन अप हो रहा है...")
+              : t("Sign Up", "साइन अप करें")}
           </button>
-        </form>
 
-        <div className="mt-4">
+          {/* GOOGLE BUTTON */}
           <button
+            type="button"
             onClick={handleGoogle}
-            className="w-full py-2 mt-2 bg-white border border-[#B3E5FC] text-[#333] rounded-md hover:bg-[#f6fbff]"
             disabled={loading}
+            className="w-full py-2 mt-2 bg-white border border-ssCardBrd text-ssNavy rounded-lg hover:bg-[#f6fbff]"
           >
-            Continue with Google
+            {t("Continue with Google", "Google के साथ जारी रखें")}
           </button>
-        </div>
 
-        <p className="text-center text-sm text-gray-600 mt-4">
-          Already have an account?{" "}
-          <a href="/login" className="text-[#6C9BCF] hover:text-[#5B8FB9] font-medium">Log in</a>
-        </p>
+          {/* ALREADY ACCOUNT */}
+          <p className="text-center text-sm text-ssText/85 mt-2">
+            {t("Already have an account?", "पहले से खाता है?")}{" "}
+            <Link to="/login" className="text-ssPrimary hover:underline">
+              {t("Log in", "लॉगिन करें")}
+            </Link>
+          </p>
+
+        </form>
       </div>
-    </div>
+    </main>
   );
 }
