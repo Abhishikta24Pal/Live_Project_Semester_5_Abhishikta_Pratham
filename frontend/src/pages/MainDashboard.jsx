@@ -84,7 +84,8 @@ export default function Dashboard() {
         </div>
 
         {/* USUAL DAILY LIFE */}
-        <div className="bg-[#00A7C6] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition col-span-1 row-span-1">
+        <div onClick={() => navigate("/anon/daily-life")}
+        className="bg-[#00A7C6] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition col-span-1 row-span-1">
           <div className="h-40 w-full rounded-xl-bg-blue-200/50 mb-4 flex items-center justify-center overflow-hidden">
           <img src={DailyLifeIcon} alt="Daily-Life" className="h-24 w-24 object-contain"/>
           </div>
@@ -118,7 +119,8 @@ export default function Dashboard() {
     </div>
     
         {/* STORIES OF OTHERS */}
-        <div className="bg-[#ffffff] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition col-span-1 row-span-1">
+        <div onClick={() => navigate("/anon/stories")}
+        className="bg-[#ffffff] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition col-span-1 row-span-1">
           <div className="h-40 w-full rounded-xl-bg-blue-200/50 mb-4 flex items-center justify-center overflow-hidden">
           <img src={StoriesIcon} alt="Stories" className="h-24 w-24 object-contain"/>
           </div>
@@ -128,7 +130,8 @@ export default function Dashboard() {
         </div>
 
         {/* PROFESSIONAL HELP */}
-        <div className="bg-[#F490B1] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition col-span-2 row-span-1">
+        <div onClick={() => navigate("/anon/pro-help")}
+        className="bg-[#F490B1] rounded-2xl p-6 shadow-md flex flex-col justify-center hover:shadow-lg transition col-span-2 row-span-1">
           <div className="h-40 w-full rounded-xl-bg-blue-200/50 mb-4 flex items-center justify-center overflow-hidden">
           <img src={ProfHelpIcon} alt="Professional Help" className="h-24 w-24 object-contain"/>
           </div>
