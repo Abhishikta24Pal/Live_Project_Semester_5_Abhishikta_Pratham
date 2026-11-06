@@ -1,6 +1,6 @@
 // frontend/src/pages/Journal.jsx
 import React, { useEffect, useState } from "react";
-import { auth, googleProvider, db } from "../firebase";
+import { auth, db } from "../firebase.js";
 import JournalEditor from "../components/JournalEditor";
 import JournalHistory from "../components/JournalHistory";
 import ReauthModal from "../components/ReauthModal";
